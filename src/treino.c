@@ -14,14 +14,14 @@ void adicionar_treino(Treino treinos[], int *total){
     printf("Exercício: ");
     scanf(" %[^\n]", t.exercicio);
 
-    printf("Peso (kg): ");
-    scanf("%d", &t.peso);
-
+    printf("Séries: ");
+    scanf("%d", &t.series);
+    
     printf("Repetições: ");
     scanf("%d", &t.repeticoes);
     
-    printf("Séries: ");
-    scanf("%d", &t.series);
+    printf("Peso (kg): ");
+    scanf("%d", &t.peso);
 
     treinos[*total] = t;
     (*total)++;
