@@ -14,4 +14,6 @@ typedef struct{
 
 void adicionar_treino(Treino treinos[], int* total);
 
+void listar_treinos(const Treino treinos[], int total);
+
 #endif

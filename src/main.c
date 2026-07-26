@@ -10,13 +10,9 @@ int main(){
     printf("LOG DE ACADEMIA - TESTE\n\n");
 
     adicionar_treino(treinos, &total);
+    adicionar_treino(treinos, &total);
 
-    printf("=== TREINO ADICIONADO ===\n");
-    printf("Data: %s\n", treinos[0].data);
-    printf("Exercício: %s\n", treinos[0].exercicio);
-    printf("Peso: %d kg\n", treinos[0].peso);
-    printf("Repetições: %d\n", treinos[0].repeticoes);
-    printf("Séries: %d\n", treinos[0].series);
+    listar_treinos(treinos, total);
 
     return 0;
 }
