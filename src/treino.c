@@ -1,19 +1,27 @@
 #include <stdio.h>
 #include "treino.h"
+#include <time.h>
+
+void obter_data_atual(char data[]){
+    time_t agora = time(NULL);
+    struct tm *hora_atual = localtime(&agora);
+    strftime(data, 11, "%d/%m/%Y", hora_atual);
+}
 
 void adicionar_treino(Treino treinos[], int *total){
     Treino t;
     int c;
 
     printf("\n====== NOVO TREINO =======\n");
-    printf("Data: ");
-    scanf("%s", t.data);
+    obter_data_atual(t.data);
+    printf("Data: %s\n", t.data);
 
-    while ((c = getchar()) != '\n' && c != EOF) {}
 
     printf("Exercício: ");
     scanf(" %[^\n]", t.exercicio);
 
+    while ((c = getchar()) != '\n' && c != EOF) {}
+    
     printf("Séries: ");
     scanf("%d", &t.series);
     
