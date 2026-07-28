@@ -5,7 +5,7 @@ void adicionar_treino(Treino treinos[], int *total){
     Treino t;
     int c;
 
-    printf("=== NOVO TREINO ===\n");
+    printf("\n====== NOVO TREINO =======\n");
     printf("Data: ");
     scanf("%s", t.data);
 
@@ -30,22 +30,16 @@ void adicionar_treino(Treino treinos[], int *total){
 
 void listar_treinos(const Treino treinos[], int total) {
     if (total == 0) {
-        printf(" --- Não há treino registrado --- ");
+        printf("\n --- Não há treino registrado --- \n");
     } else {
-        printf("%-12s | %-20s | %8s | %12s | %8s\n",
-            "Data", "Exercício", "Séries", "Repetições", "Peso");
-
-        printf("--------------------------------------------------------\n");
+        printf("\n=========== TREINOS REGISTRADOS ===========\n");
         for (int i = 0; i < total; i++) {
-            printf("%-12s | %-20s | %8d | %12d | %8d\n",
-            treinos[i].data,
-            treinos[i].exercicio,
-            treinos[i].series,
-            treinos[i].repeticoes,
-            treinos[i].peso);
+            printf("\nData: %s\n", treinos[i].data);
+            printf("Exercício: %s\n", treinos[i].exercicio);
+            printf("Séries: %d  |  Repetições: %d  |  Peso: %d kg\n", 
+                   treinos[i].series, 
+                   treinos[i].repeticoes, 
+                   treinos[i].peso);
         }
-        printf("--------------------------------------------------------\n");
     }
-    // Se houver, mostrar tabela com cabeçalho
-    // Cada linha deve ter data, exercício, peso, reps, séries
 }

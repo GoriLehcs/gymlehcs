@@ -6,13 +6,36 @@
 int main(){
     Treino treinos[MAX_TREINOS];
     int total = 0;
+    int opcao;
+    int c;  //variável para limpar o buffer do teclado
 
-    printf("LOG DE ACADEMIA - TESTE\n\n");
+    do {
+        printf("\n========== Menu ==========\n");
+        printf("1. Adicionar treino\n");
+        printf("2. Listar treinos\n");
+        printf("3. Sair\n");
+        printf("Opcao: ");
+        scanf("%d", &opcao);
 
-    adicionar_treino(treinos, &total);
-    adicionar_treino(treinos, &total);
+        while ((c = getchar()) != '\n' && c != EOF) {}
 
-    listar_treinos(treinos, total);
+        switch(opcao){
+            case 1:
+            adicionar_treino(treinos, &total);
+            break;
 
+            case 2:
+            listar_treinos(treinos, total);
+            break;
+
+            case 3:
+            printf("Saindo...\n");
+            break;
+
+            default:
+            printf("Opcao invalida\n");
+            break;
+        }
+    } while (opcao != 3);
     return 0;
 }
