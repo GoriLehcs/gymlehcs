@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 #include "treino.h"
 #include <time.h>
 
@@ -11,17 +12,24 @@ void obter_data_atual(char data[]){
 void adicionar_treino(Treino treinos[], int *total){
     Treino t;
     int c;
+    char data_temp[11];
 
     printf("\n====== NOVO TREINO =======\n");
+
     obter_data_atual(t.data);
-    printf("Data: %s\n", t.data);
+    printf("Data (%s): ", t.data);
+    
+    fgets(data_temp, sizeof(data_temp), stdin);
+    data_temp[strcspn(data_temp, "\n")] = '\0';
+    
+    if (strlen(data_temp) > 0) {
+        strcpy(t.data, data_temp);
+    }
 
 
     printf("Exercício: ");
     scanf(" %[^\n]", t.exercicio);
 
-    while ((c = getchar()) != '\n' && c != EOF) {}
-    
     printf("Séries: ");
     scanf("%d", &t.series);
     
