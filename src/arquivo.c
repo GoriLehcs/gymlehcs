@@ -1,12 +1,15 @@
 #include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 #include "arquivo.h"
+
 
 #define ARQUIVO "data/treinos.csv"
 
 void salvar_treinos(const Treino treinos[], int total) {
     FILE *arquivo = fopen(ARQUIVO, "w");
     if (arquivo == NULL) {
-        prinf("Erro ao salvar arquivo!");
+        printf("Erro ao salvar arquivo!");
         return;
     }
 
@@ -16,12 +19,12 @@ void salvar_treinos(const Treino treinos[], int total) {
 
     //Dados
     for (int i = 0; i < total; i++) {
-        fprintf(arquivo, "5s,%s,%d,%d,%d\n",
+        fprintf(arquivo, "%s,%s,%d,%d,%d\n",
             treinos[i].data,
             treinos[i].exercicio,
             treinos[i].series,
             treinos[i].repeticoes,
-            treinos[i].peso)
+            treinos[i].peso);
     }
 
     fclose(arquivo);
@@ -42,10 +45,30 @@ int carregar_treinos(Treino treinos[]) {
     while (fgets(linha, sizeof(linha), arquivo) != NULL && total < 1000) {
         linha[strcspn(linha, "\n")] = '\0';
 
-        char *token - strtok(linha, ",");
+        char *token = strtok(linha, ",");
         if (token == NULL) continue;
-        strcpy(treinos[totoal].data, token);
+        strcpy(treinos[total].data, token);
 
-        token = st
+        token = strtok(NULL, ",");
+        if (token == NULL) continue;
+        strcpy(treinos[total].exercicio, token);
+
+        token = strtok(NULL, ",");
+        if (token == NULL) continue;
+        treinos[total].series = atoi(token);
+
+        token = strtok(NULL, ",");
+        if (token == NULL) continue;
+        treinos[total].repeticoes = atoi(token);
+
+        token = strtok(NULL, ",");
+        if (token == NULL) continue;
+        treinos[total].peso = atoi(token);
+
+        total++;
     }
+
+    fclose(arquivo);
+    printf("Carregados %d treinos de %s\n", total, ARQUIVO);
+    return total;
 }

@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "treino.h"
+#include "arquivo.h"
 
 #define MAX_TREINOS 100
 
@@ -22,6 +23,7 @@ int main(){
         switch(opcao){
             case 1:
             adicionar_treino(treinos, &total);
+            salvar_treinos(treinos, total);
             break;
 
             case 2:
