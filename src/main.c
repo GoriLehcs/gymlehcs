@@ -10,6 +10,8 @@ int main(){
     int opcao;
     int c;  //variável para limpar o buffer do teclado
 
+    total = carregar_treinos(treinos);
+
     do {
         printf("\n========== Menu ==========\n");
         printf("1. Adicionar treino\n");
